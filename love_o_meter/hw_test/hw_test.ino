@@ -4,8 +4,6 @@ const int ledOne = 2;
 const int ledTwo = 3;
 const int ledThree = 4;
 
-float temperature = 25.0;
-
 void setup() {
   Serial.begin(9600);
   pinMode(ledOne, OUTPUT);
@@ -14,11 +12,27 @@ void setup() {
 }
 
 void loop() {
+  loveMeterLed(20.0);
+  delay(500);
+
+  loveMeterLed(23.0);
+  delay(500);
+
+  loveMeterLed(25.0);
+  delay(500);
+
+  loveMeterLed(28.0);
+  delay(500);
+
+  delay(1);
+}
+
+void loveMeterLed(float temperature) {
   if (temperature <= 22.0) {
     digitalWrite(ledOne, LOW);
     digitalWrite(ledTwo, LOW);
     digitalWrite(ledThree, LOW);  
-  } 
+  }
   
   if (temperature > 22.0) {
     digitalWrite(ledOne, HIGH);
@@ -37,7 +51,4 @@ void loop() {
     digitalWrite(ledTwo, HIGH);
     digitalWrite(ledThree, HIGH);  
   }
-  
-  delay(1);
 }
-
