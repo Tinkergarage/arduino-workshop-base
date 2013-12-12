@@ -18,6 +18,7 @@ void loop() {
   int sensorVal = analogRead(sensorPin);
   loveMeterLed(sensorVal);
 
+  printTemperature(sensorVal);
   delay(1);
 }
 
@@ -45,4 +46,9 @@ void loveMeterLed(float temperature) {
     digitalWrite(ledTwo, HIGH);
     digitalWrite(ledThree, HIGH);
   }
+}
+
+void printTemperature(int sensorVal) {
+  Serial.print("Sensor value :");
+  Serial.println(sensorVal);
 }
