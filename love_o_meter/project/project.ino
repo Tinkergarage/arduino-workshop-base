@@ -16,9 +16,12 @@ void setup() {
 
 void loop() {
   int sensorVal = analogRead(sensorPin);
-  loveMeterLed(sensorVal);
+  float voltage = (sensorVal/1024.0) * 5.0;
+  float temperature = (voltage - .5) * 100;
 
-  printTemperature(sensorVal);
+  loveMeterLed(temperature);
+
+  printTemperature(temperature);
   delay(1);
 }
 
@@ -48,7 +51,7 @@ void loveMeterLed(float temperature) {
   }
 }
 
-void printTemperature(int sensorVal) {
-  Serial.print("Sensor value :");
+void printTemperature(float sensorVal) {
+  Serial.print("Temperature: ");
   Serial.println(sensorVal);
 }
